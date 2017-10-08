@@ -3,21 +3,22 @@ package ecomodcompat.asm;
 import ecomod.api.EcomodAPI;
 import ecomod.api.EcomodStuff;
 import ecomod.api.pollution.PollutionData;
+import ecomodcompat.core.EMCConfig;
 import ecomodcompat.core.EMCUtils;
 import ecomodcompat.core.EcomodCompat;
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.ChunkPos;
-import net.minecraftforge.fluids.FluidTank;
 
 public class EMCASMHooks
 {
 	public static void handle_IE_TEMulti_Process_doProcessTick(Object o, int ticksAdded)
 	{
-		if(ticksAdded > 0 && o instanceof TileEntity)
+		if(o != null && ticksAdded > 0 && o instanceof TileEntity)
 		{
 			TileEntity te = ((TileEntity)o);
+			
+			if(te.getWorld().isRemote || !EMCConfig.isTileEntitySupported(te))
+				return;
 			
 			PollutionData tile_pollution = EcomodStuff.tile_entity_pollution.getTilePollution(TileEntity.getKey(te.getClass()));
 					
@@ -50,9 +51,12 @@ public class EMCASMHooks
 	
 	public static void handle_IE_Assembler_doProcessOutput(Object o, ItemStack is)
 	{
-		if(o instanceof TileEntity && is != null && !is.isEmpty())
+		if(o != null && o instanceof TileEntity && is != null && !is.isEmpty())
 		{
 			TileEntity te = ((TileEntity)o);
+			
+			if(te.getWorld().isRemote || !EMCConfig.isTileEntitySupported(te))
+				return;
 			
 			PollutionData tile_pollution = EcomodStuff.tile_entity_pollution.getTilePollution(TileEntity.getKey(te.getClass()));
 					

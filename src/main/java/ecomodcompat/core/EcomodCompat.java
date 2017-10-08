@@ -66,6 +66,6 @@ public class EcomodCompat
 	@EventHandler
 	public static void onPostInit(FMLPostInitializationEvent event)
 	{
-		
+		EMCConfig.rebuildModsTilesLists();
 	}
 }

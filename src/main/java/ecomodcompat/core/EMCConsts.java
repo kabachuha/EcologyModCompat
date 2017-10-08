@@ -7,7 +7,7 @@ public class EMCConsts
 {
 	public static final String MODID = "ecomodcompat";
 	public static final String NAME = "EcologyMod|Compat";
-	public static final String VESRION = "1.0.0.0";
+	public static final String VESRION = "1.12.2-1.0.0.0";
 	public static final String ECOMOD_ID = "ecomod";
 	
 	public static final ArtifactVersion ECOMOD_AS_ARTIFACT = new DefaultArtifactVersion(EMCConsts.ECOMOD_ID, true);
