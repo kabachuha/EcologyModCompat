@@ -3,7 +3,7 @@ package ecomodcompat.asm;
 import java.lang.reflect.Field;
 
 import ecomod.api.EcomodAPI;
-import ecomod.common.pollution.PollutionEffectsConfig;
+import ecomod.common.pollution.config.PollutionEffectsConfig;
 import ecomodcompat.client.CliProxy;
 import ecomodcompat.core.EcomodCompat;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
